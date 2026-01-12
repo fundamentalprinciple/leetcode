@@ -10,8 +10,8 @@ class Solution:
         while(True):  
             if element == None:
                 return False
-            if element.val != "a":
-                element.val = "a"
+            if type(element.val) != str:
+                element.val = str(element.val)
             else:
                 return True      
             element = element.next
