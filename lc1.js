@@ -4,6 +4,20 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    // good algorithm -> check if difference of target and element exists in hashmap of elements,indices
+
+    hashmap = new Map();
+    index=-1
+    for (element of nums) {
+        index++;
+        if (hashmap.has(target-element)) {
+            return [hashmap.get(target-element),index];
+        }
+        hashmap.set(element,index);
+    };
+
+
+
     // faulty algorithm, can't be improved further
     /*
     Checks for adjacent elements
