@@ -24,28 +24,23 @@ public class Solution {
         queueA.Enqueue(p,priority);
         queueB.Enqueue(q,priority);
 
-        while(queueA.Count > 0 & queueB.Count > 0) {
+        while(queueA.Count > 0 && queueB.Count > 0) {
             TreeNode a = queueA.Dequeue();
             TreeNode b = queueB.Dequeue();
-            if (a!=null & b!=null) {
-                if (a.val == b.val) {
-                    priority++;
-                    if (a.left!=null) { 
-                        queueA.Enqueue(a.left, priority);
-                    };
-                    if (b.left!=null) { 
-                        queueB.Enqueue(b.left, priority);
-                    };
-                    priority++;
-                    if (a.right!=null) {
-                        queueA.Enqueue(a.right, priority);
-                    };
-                    if (b.right!=null) {
-                        queueB.Enqueue(b.right, priority);
-                    };
+            if (a==null || b==null) {
+                if(a==null & b==null) {
+                    continue;
                 } else {
                     return false;
-                };
+                }
+            }
+            if (a.val == b.val) {
+                priority++; 
+                queueA.Enqueue(a.left, priority);
+                queueB.Enqueue(b.left, priority);
+                priority++;
+                queueA.Enqueue(a.right, priority);
+                queueB.Enqueue(b.right, priority);
             } else {
                 return false;
             };
